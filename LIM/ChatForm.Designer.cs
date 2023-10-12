@@ -42,6 +42,10 @@
             this.接收目标设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.重置接收目标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设为接收目标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.checkBox3 = new System.Windows.Forms.CheckBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +58,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(652, 420);
             this.listBox1.TabIndex = 0;
+            this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
             // 
             // button1
             // 
@@ -64,6 +69,7 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "清除记录";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -74,6 +80,7 @@
             this.button2.TabIndex = 2;
             this.button2.Text = "发送";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // textBox1
             // 
@@ -134,12 +141,14 @@
             this.接收目标设置ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(177, 56);
+            this.contextMenuStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.contextMenuStrip1_MouseDown);
             // 
             // 清除记录ToolStripMenuItem
             // 
             this.清除记录ToolStripMenuItem.Name = "清除记录ToolStripMenuItem";
-            this.清除记录ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.清除记录ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.清除记录ToolStripMenuItem.Text = "清除记录";
+            this.清除记录ToolStripMenuItem.Click += new System.EventHandler(this.清除记录ToolStripMenuItem_Click);
             // 
             // 接收目标设置ToolStripMenuItem
             // 
@@ -147,26 +156,73 @@
             this.重置接收目标ToolStripMenuItem,
             this.设为接收目标ToolStripMenuItem});
             this.接收目标设置ToolStripMenuItem.Name = "接收目标设置ToolStripMenuItem";
-            this.接收目标设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.接收目标设置ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.接收目标设置ToolStripMenuItem.Text = "接收目标设置";
             // 
             // 重置接收目标ToolStripMenuItem
             // 
             this.重置接收目标ToolStripMenuItem.Name = "重置接收目标ToolStripMenuItem";
-            this.重置接收目标ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.重置接收目标ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.重置接收目标ToolStripMenuItem.Text = "重置接收目标";
             // 
             // 设为接收目标ToolStripMenuItem
             // 
             this.设为接收目标ToolStripMenuItem.Name = "设为接收目标ToolStripMenuItem";
-            this.设为接收目标ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.设为接收目标ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.设为接收目标ToolStripMenuItem.Text = "设为接收目标";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox1.Location = new System.Drawing.Point(778, 471);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 8;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox2.Location = new System.Drawing.Point(672, 70);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(122, 20);
+            this.checkBox2.TabIndex = 9;
+            this.checkBox2.Text = "无视网络编号";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox3.Location = new System.Drawing.Point(672, 96);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Size = new System.Drawing.Size(122, 20);
+            this.checkBox3.TabIndex = 10;
+            this.checkBox3.Text = "命令执行模式";
+            this.checkBox3.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("宋体", 12F);
+            this.button3.Location = new System.Drawing.Point(672, 418);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(133, 33);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "查询客户端";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 613);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.checkBox3);
+            this.Controls.Add(this.checkBox2);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label2);
@@ -179,6 +235,8 @@
             this.MaximizeBox = false;
             this.Name = "ChatForm";
             this.Text = "LIM Node > Chat";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ChatForm_FormClosed);
+            this.Load += new System.EventHandler(this.ChatForm_Load);
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -200,5 +258,9 @@
         private System.Windows.Forms.ToolStripMenuItem 接收目标设置ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 重置接收目标ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设为接收目标ToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button button3;
     }
 }
