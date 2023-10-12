@@ -68,11 +68,48 @@ namespace LIM
 
         private void button2_Click(object sender, EventArgs e)
         {
+            if (textBox1.Text == null || textBox1.Text.Trim().Equals(""))
+            {
+                return;
+            }
+            try
+            {
+                IPEndPoint ip = GlobalData.BroadcastIP;
+                if (checkBox1.Checked)
+                {
+                    string str = "255.255.255.255";
+                    if (textBox2.Text == null || textBox2.Text.Trim().Equals(""))
+                    {
+                        str = "255.255.255.255";
+                    }
+                    else
+                    {
+                        str = textBox2.Text;
+                    }
+
+                    ip = new IPEndPoint(IPAddress.Parse(str), GlobalData.ProtocalPort);
+                }
+                GlobalData.SendMessage(0, GlobalData.UserName, textBox1.Text, ip);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             GlobalData.SendMessage(1, "find", GlobalData.UserName, GlobalData.BroadcastIP);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            textBox2.Enabled = checkBox1.Checked;
+            textBox2.ReadOnly = !checkBox1.Checked;
+
         }
     }
 }

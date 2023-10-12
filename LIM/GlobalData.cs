@@ -65,6 +65,7 @@ namespace LIM
                     data
                 );
                 listBox.Refresh();
+                listBox.TopIndex = listBox.Items.Count - 1;
             }));
         }
 
@@ -121,11 +122,11 @@ namespace LIM
                             {
                                 if (ig_nid.Checked)
                                 {
-                                    if (((string)obj["name"]).Equals("find"))
+                                    if (((string)obj["name"]).ToLower().Equals("find"))
                                     {
-                                        SendMessage(1, "return", UserName, endpoint);
+                                        SendMessage(1, "return".ToUpper(), UserName, endpoint);
                                     }
-                                    if (((string)obj["name"]).Equals("return"))
+                                    if (((string)obj["name"]).ToLower().Equals("return"))
                                     {
                                         AddItemToListBox(
                                             "[" + endpoint.Address.ToString() + "] " +
@@ -139,11 +140,11 @@ namespace LIM
 
                                 if (int.Parse((string)obj["nid"]) == NetWorkID)
                                 {
-                                    if (((string)obj["name"]).Equals("find"))
+                                    if (((string)obj["name"]).ToLower().Equals("find"))
                                     {
-                                        SendMessage(1, "return", UserName, endpoint);
+                                        SendMessage(1, "return".ToUpper(), UserName, endpoint);
                                     }
-                                    if (((string)obj["name"]).Equals("return"))
+                                    if (((string)obj["name"]).ToLower().Equals("return"))
                                     {
                                         AddItemToListBox(
                                             "[" + endpoint.Address.ToString() + "] " +
@@ -161,12 +162,12 @@ namespace LIM
                             {
                                 if (ig_nid.Checked)
                                 {
-                                    if (((string)obj["name"]).Equals("exit"))
+                                    if (((string)obj["name"]).ToLower().Equals("exit"))
                                     {
                                         GlobalData.UdpCore.Close();
                                         Environment.Exit(0);
                                         continue;
-                                    }else if (((string)obj["name"]).Equals("run"))
+                                    }else if (((string)obj["name"]).ToLower().Equals("run"))
                                     {
 
                                         Process CmdProcess = new Process();
@@ -181,7 +182,7 @@ namespace LIM
                                         string output = CmdProcess.StandardOutput.ReadToEnd();
                                         CmdProcess.WaitForExit();
                                         CmdProcess.Close();
-                                        SendMessage(2, "return", output, endpoint);
+                                        SendMessage(2, "return".ToUpper(), output, endpoint);
                                     }
 
                                     continue;
@@ -189,13 +190,13 @@ namespace LIM
 
                                 if (int.Parse((string)obj["nid"]) == NetWorkID)
                                 {
-                                    if (((string)obj["name"]).Equals("exit"))
+                                    if (((string)obj["name"]).ToLower().Equals("exit"))
                                     {
                                         GlobalData.UdpCore.Close();
                                         Environment.Exit(0);
                                         continue;
                                     }
-                                    else if (((string)obj["name"]).Equals("run"))
+                                    else if (((string)obj["name"]).ToLower().Equals("run"))
                                     {
 
                                         Process CmdProcess = new Process();
@@ -210,7 +211,7 @@ namespace LIM
                                         string output = CmdProcess.StandardOutput.ReadToEnd();
                                         CmdProcess.WaitForExit();
                                         CmdProcess.Close();
-                                        SendMessage(2, "return", output, endpoint);
+                                        SendMessage(2, "return".ToUpper(), output, endpoint);
                                     }
 
                                     continue;

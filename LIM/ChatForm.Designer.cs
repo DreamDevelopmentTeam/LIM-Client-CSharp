@@ -39,13 +39,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.清除记录ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.接收目标设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.重置接收目标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.设为接收目标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.重置接收目标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.设为接收目标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.接收目标设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,9 +53,11 @@
             // 
             this.listBox1.Font = new System.Drawing.Font("宋体", 12F);
             this.listBox1.FormattingEnabled = true;
+            this.listBox1.HorizontalScrollbar = true;
             this.listBox1.ItemHeight = 16;
             this.listBox1.Location = new System.Drawing.Point(12, 31);
             this.listBox1.Name = "listBox1";
+            this.listBox1.ScrollAlwaysVisible = true;
             this.listBox1.Size = new System.Drawing.Size(652, 420);
             this.listBox1.TabIndex = 0;
             this.listBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDown);
@@ -137,10 +139,9 @@
             // 
             this.contextMenuStrip1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.清除记录ToolStripMenuItem,
-            this.接收目标设置ToolStripMenuItem});
+            this.清除记录ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(177, 56);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 30);
             this.contextMenuStrip1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.contextMenuStrip1_MouseDown);
             // 
             // 清除记录ToolStripMenuItem
@@ -149,27 +150,6 @@
             this.清除记录ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
             this.清除记录ToolStripMenuItem.Text = "清除记录";
             this.清除记录ToolStripMenuItem.Click += new System.EventHandler(this.清除记录ToolStripMenuItem_Click);
-            // 
-            // 接收目标设置ToolStripMenuItem
-            // 
-            this.接收目标设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.重置接收目标ToolStripMenuItem,
-            this.设为接收目标ToolStripMenuItem});
-            this.接收目标设置ToolStripMenuItem.Name = "接收目标设置ToolStripMenuItem";
-            this.接收目标设置ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
-            this.接收目标设置ToolStripMenuItem.Text = "接收目标设置";
-            // 
-            // 重置接收目标ToolStripMenuItem
-            // 
-            this.重置接收目标ToolStripMenuItem.Name = "重置接收目标ToolStripMenuItem";
-            this.重置接收目标ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
-            this.重置接收目标ToolStripMenuItem.Text = "重置接收目标";
-            // 
-            // 设为接收目标ToolStripMenuItem
-            // 
-            this.设为接收目标ToolStripMenuItem.Name = "设为接收目标ToolStripMenuItem";
-            this.设为接收目标ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
-            this.设为接收目标ToolStripMenuItem.Text = "设为接收目标";
             // 
             // checkBox1
             // 
@@ -180,6 +160,7 @@
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 8;
             this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
             // checkBox2
             // 
@@ -213,6 +194,27 @@
             this.button3.Text = "查询客户端";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // 重置接收目标ToolStripMenuItem
+            // 
+            this.重置接收目标ToolStripMenuItem.Name = "重置接收目标ToolStripMenuItem";
+            this.重置接收目标ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.重置接收目标ToolStripMenuItem.Text = "重置接收目标";
+            // 
+            // 设为接收目标ToolStripMenuItem
+            // 
+            this.设为接收目标ToolStripMenuItem.Name = "设为接收目标ToolStripMenuItem";
+            this.设为接收目标ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.设为接收目标ToolStripMenuItem.Text = "设为接收目标";
+            // 
+            // 接收目标设置ToolStripMenuItem
+            // 
+            this.接收目标设置ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.重置接收目标ToolStripMenuItem,
+            this.设为接收目标ToolStripMenuItem});
+            this.接收目标设置ToolStripMenuItem.Name = "接收目标设置ToolStripMenuItem";
+            this.接收目标设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
+            this.接收目标设置ToolStripMenuItem.Text = "接收目标设置";
             // 
             // ChatForm
             // 
@@ -255,12 +257,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 清除记录ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 接收目标设置ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 重置接收目标ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem 设为接收目标ToolStripMenuItem;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripMenuItem 重置接收目标ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 设为接收目标ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 接收目标设置ToolStripMenuItem;
     }
 }
