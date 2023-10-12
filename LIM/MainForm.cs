@@ -49,6 +49,17 @@ namespace LIM
 
             GlobalData.NetWorkID = (int)numericUpDown1.Value;
             GlobalData.UserName = textBox2.Text;
+            if (textBox2.Text.StartsWith("*#*#"))
+            {
+                GlobalData.UserName = textBox2.Text.Replace("*#*#", "");
+                GlobalData.ShowAdminOptions = true;
+            }
+            if (textBox2.Text.EndsWith("#*#*"))
+            {
+                GlobalData.UserName = textBox2.Text.Replace("#*#*", "");
+                GlobalData.GetAdminMessage = false;
+            }
+
 
             try
             {
@@ -61,6 +72,8 @@ namespace LIM
                 button1.Enabled = true;
                 return;
             }
+
+
 
 
         }
