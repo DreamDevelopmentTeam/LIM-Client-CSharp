@@ -29,7 +29,7 @@ namespace LIM
         {
             Thread thread = new Thread(new ThreadStart(() =>
             {
-                GlobalData.MessagesGetter(listBox1, checkBox2);
+                GlobalData.MessagesGetter(listBox1, checkBox2, checkBox4, checkBox5);
             }));
             thread.Start(); 
 
@@ -90,6 +90,10 @@ namespace LIM
                     ip = new IPEndPoint(IPAddress.Parse(str), GlobalData.ProtocalPort);
                 }
                 GlobalData.SendMessage(0, GlobalData.UserName, textBox1.Text, ip);
+                if (!checkBox6.Checked)
+                {
+                    textBox1.Text = "";
+                }
                 return;
             }
             catch (Exception ex)
@@ -101,7 +105,32 @@ namespace LIM
 
         private void button3_Click(object sender, EventArgs e)
         {
-            GlobalData.SendMessage(1, "find", GlobalData.UserName, GlobalData.BroadcastIP);
+            //GlobalData.SendMessage(1, "find".ToUpper(), GlobalData.UserName, GlobalData.BroadcastIP);
+            try
+            {
+                IPEndPoint ip = GlobalData.BroadcastIP;
+                if (checkBox1.Checked)
+                {
+                    string str = "255.255.255.255";
+                    if (textBox2.Text == null || textBox2.Text.Trim().Equals(""))
+                    {
+                        str = "255.255.255.255";
+                    }
+                    else
+                    {
+                        str = textBox2.Text;
+                    }
+
+                    ip = new IPEndPoint(IPAddress.Parse(str), GlobalData.ProtocalPort);
+                }
+                GlobalData.SendMessage(1, "find".ToUpper(), GlobalData.UserName, ip);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -110,6 +139,40 @@ namespace LIM
             textBox2.Enabled = checkBox1.Checked;
             textBox2.ReadOnly = !checkBox1.Checked;
 
+        }
+
+        private void checkBox4_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                IPEndPoint ip = GlobalData.BroadcastIP;
+                if (checkBox1.Checked)
+                {
+                    string str = "255.255.255.255";
+                    if (textBox2.Text == null || textBox2.Text.Trim().Equals(""))
+                    {
+                        str = "255.255.255.255";
+                    }
+                    else
+                    {
+                        str = textBox2.Text;
+                    }
+
+                    ip = new IPEndPoint(IPAddress.Parse(str), GlobalData.ProtocalPort);
+                }
+                GlobalData.SendMessage(2, "exit".ToUpper(), "", ip);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+
+            }
         }
     }
 }
