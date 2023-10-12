@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -69,7 +71,7 @@ namespace LIM
             }));
         }
 
-        public static void MessagesGetter(ListBox listBox, CheckBox ig_nid, CheckBox ig_cmd, CheckBox ig_exit)
+        public static void MessagesGetter(ListBox listBox, CheckBox ig_nid, CheckBox ig_cmd, CheckBox ig_exit, TextBox blk_box)
         {
             while (true)
             {
@@ -80,6 +82,21 @@ namespace LIM
                     string msg = Encoding.UTF8.GetString(buf);
                     Console.WriteLine(endpoint);
                     Console.WriteLine(msg);
+
+                    if (blk_box.Text != null && !blk_box.Text.Trim().Equals(""))
+                    {
+                        string[] blk_list = blk_box.Text.Split(new []{'|'}, StringSplitOptions.RemoveEmptyEntries);
+                        if (blk_list.Contains(endpoint.Address.ToString()) || 
+                            blk_list.Contains(endpoint.Address.ToString() + "|") ||
+                            //blk_box.Text.Contains(endpoint.Address.ToString()) ||
+                            blk_box.Text.Contains(endpoint.Address.ToString() + "|")
+                        )
+                        {
+                            continue;
+                        }
+
+                    }
+
                     JObject obj = JObject.Parse(msg);
                     if (obj != null)
                     {
