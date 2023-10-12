@@ -64,7 +64,9 @@ namespace LIM
             try
             {
                 GlobalData.UdpCore = new UdpClient(GlobalData.ListenIP);
-
+                this.Hide();
+                ChatForm chatForm = new ChatForm();
+                chatForm.Show();
             }
             catch (Exception ex)
             {
@@ -72,10 +74,7 @@ namespace LIM
                 button1.Enabled = true;
                 return;
             }
-
-
-
-
+            
         }
     }
 }
