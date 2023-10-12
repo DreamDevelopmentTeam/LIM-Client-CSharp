@@ -27,11 +27,44 @@ namespace LIM
 
         private async void ChatForm_Load(object sender, EventArgs e)
         {
+            button4.Enabled = false;
+            checkBox2.Enabled = false;
+            checkBox3.Enabled = false;
+            checkBox4.Enabled = false;
+            checkBox5.Enabled = false; 
+            button4.Hide();
+            checkBox2.Hide();
+            checkBox3.Hide();
+            checkBox4.Hide();
+            checkBox5.Hide();
+            if (GlobalData.GetAdminMessage == false)
+            {
+                checkBox4.Enabled = true;
+                checkBox5.Enabled = true;
+                checkBox4.Show();
+                checkBox5.Show();
+            }
+            if (GlobalData.ShowAdminOptions == true)
+            {
+                button4.Enabled = true;
+                checkBox2.Enabled = true;
+                checkBox3.Enabled = true;
+                checkBox4.Enabled = true;
+                checkBox5.Enabled = true;
+                button4.Show();
+                checkBox2.Show();
+                checkBox3.Show();
+                checkBox4.Show();
+                checkBox5.Show();
+            }
+
             Thread thread = new Thread(new ThreadStart(() =>
             {
                 GlobalData.MessagesGetter(listBox1, checkBox2, checkBox4, checkBox5, textBox3);
             }));
             thread.Start(); 
+
+
 
 
         }
