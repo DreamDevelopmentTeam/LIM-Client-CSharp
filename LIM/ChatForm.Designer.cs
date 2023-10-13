@@ -52,6 +52,8 @@
             this.checkBox6 = new System.Windows.Forms.CheckBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.checkBox7 = new System.Windows.Forms.CheckBox();
+            this.checkBox8 = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,6 +101,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(652, 105);
             this.textBox1.TabIndex = 3;
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // label1
             // 
@@ -153,7 +156,7 @@
             // 清除记录ToolStripMenuItem
             // 
             this.清除记录ToolStripMenuItem.Name = "清除记录ToolStripMenuItem";
-            this.清除记录ToolStripMenuItem.Size = new System.Drawing.Size(176, 26);
+            this.清除记录ToolStripMenuItem.Size = new System.Drawing.Size(144, 26);
             this.清除记录ToolStripMenuItem.Text = "清除记录";
             this.清除记录ToolStripMenuItem.Click += new System.EventHandler(this.清除记录ToolStripMenuItem_Click);
             // 
@@ -204,13 +207,13 @@
             // 重置接收目标ToolStripMenuItem
             // 
             this.重置接收目标ToolStripMenuItem.Name = "重置接收目标ToolStripMenuItem";
-            this.重置接收目标ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.重置接收目标ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.重置接收目标ToolStripMenuItem.Text = "重置接收目标";
             // 
             // 设为接收目标ToolStripMenuItem
             // 
             this.设为接收目标ToolStripMenuItem.Name = "设为接收目标ToolStripMenuItem";
-            this.设为接收目标ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.设为接收目标ToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.设为接收目标ToolStripMenuItem.Text = "设为接收目标";
             // 
             // 接收目标设置ToolStripMenuItem
@@ -287,11 +290,37 @@
             this.textBox3.Size = new System.Drawing.Size(133, 170);
             this.textBox3.TabIndex = 17;
             // 
+            // checkBox7
+            // 
+            this.checkBox7.AutoSize = true;
+            this.checkBox7.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox7.Location = new System.Drawing.Point(285, 468);
+            this.checkBox7.Name = "checkBox7";
+            this.checkBox7.Size = new System.Drawing.Size(170, 20);
+            this.checkBox7.TabIndex = 18;
+            this.checkBox7.Text = "Ctrl+Enter发送消息";
+            this.checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            this.checkBox8.AutoSize = true;
+            this.checkBox8.Checked = true;
+            this.checkBox8.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox8.Font = new System.Drawing.Font("宋体", 12F);
+            this.checkBox8.Location = new System.Drawing.Point(149, 468);
+            this.checkBox8.Name = "checkBox8";
+            this.checkBox8.Size = new System.Drawing.Size(130, 20);
+            this.checkBox8.TabIndex = 19;
+            this.checkBox8.Text = "Enter发送消息";
+            this.checkBox8.UseVisualStyleBackColor = true;
+            // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 613);
+            this.Controls.Add(this.checkBox8);
+            this.Controls.Add(this.checkBox7);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.checkBox6);
@@ -347,5 +376,7 @@
         private System.Windows.Forms.CheckBox checkBox6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.CheckBox checkBox7;
+        private System.Windows.Forms.CheckBox checkBox8;
     }
 }

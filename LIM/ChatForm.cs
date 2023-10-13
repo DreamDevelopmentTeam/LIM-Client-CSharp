@@ -215,5 +215,29 @@ namespace LIM
 
             }
         }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (e.Control)
+                {
+                    if (checkBox7.Checked)
+                    {
+                        e.Handled = true;
+                        e.SuppressKeyPress = true;
+                        button2_Click(null, null);
+                        return;
+                    }
+                }
+                if (checkBox8.Checked)
+                {
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+                    button2_Click(null, null);
+                    return;
+                }
+            }
+        }
     }
 }
