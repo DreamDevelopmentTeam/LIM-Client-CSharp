@@ -139,7 +139,7 @@ namespace LIM
             }
             catch (Exception ex)
             {
-                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             }
         }
@@ -169,7 +169,7 @@ namespace LIM
             }
             catch (Exception ex)
             {
-                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             }
         }
@@ -211,7 +211,7 @@ namespace LIM
             }
             catch (Exception ex)
             {
-                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("无法发送消息：尝试发送消息时发生错误！\n\n" + ex.Message, "LIM Node", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             }
         }

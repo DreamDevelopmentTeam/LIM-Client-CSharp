@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Windows.Forms;
+using LIM.Encryption;
 using Newtonsoft.Json.Linq;
 
 
@@ -19,12 +20,22 @@ namespace LIM
             "admin",
             "system",
             "sys",
-            "lim",
             "fcp",
+            "lim",
             "core",
+            "console",
+            "protocol",
+            "acp",
+            "hagp",
+            "p2p",
+        };
 
+
+        public static readonly string[] UserNameKeyWords = new String[]
+        {
             "刘金玉",
             "刘国强",
+            "林爽爽",
         };
 
         public static bool GetAdminMessage = true;
@@ -33,6 +44,14 @@ namespace LIM
         public static int NetWorkID = 0;
         public static string UserName = "";
 
+
+        public static bool EnableEncryption = false;
+        public static string EncryptionPassword = "";
+
+
+
+
+        // Network
         public static readonly IPEndPoint BroadcastIP = new IPEndPoint(IPAddress.Broadcast, ProtocalPort);
         public static readonly IPEndPoint ListenIP = new IPEndPoint(IPAddress.Any, ProtocalPort);
         public static readonly IPEndPoint ListenIPAny = new IPEndPoint(IPAddress.Any, 0);
@@ -51,6 +70,10 @@ namespace LIM
                 string data = obj.ToString();
                 Console.WriteLine(data);
                 byte[] bytes = Encoding.UTF8.GetBytes(data);
+                if (EnableEncryption)
+                {
+                    bytes = AES256.Encrypt(bytes, Encoding.UTF8.GetBytes(EncryptionPassword));
+                }
                 UdpCore.Send(bytes, bytes.Length, recv);
             }
             catch(Exception ex)
@@ -79,6 +102,20 @@ namespace LIM
                 {
                     IPEndPoint endpoint = new IPEndPoint(IPAddress.Any, ProtocalPort);
                     byte[] buf = UdpCore.Receive(ref endpoint);
+
+                    if (EnableEncryption)
+                    {
+                        try
+                        {
+                            buf = AES256.Decrypt(buf, Encoding.UTF8.GetBytes(EncryptionPassword));
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.Write(ex.ToString());
+                            continue;
+                        }
+                    }
+
                     string msg = Encoding.UTF8.GetString(buf);
                     Console.WriteLine(endpoint);
                     Console.WriteLine(msg);
@@ -115,7 +152,7 @@ namespace LIM
                                 {
                                     AddItemToListBox(
                                         "[" + endpoint.Address.ToString() + "] " +
-                                        obj["nid"].ToString() + "@" + obj["name"].ToString() + " > " +
+                                        obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                         obj["msg"].ToString(),
                                         listBox
                                     );
@@ -126,7 +163,7 @@ namespace LIM
                                 {
                                     AddItemToListBox(
                                         "[" + endpoint.Address.ToString() + "] " +
-                                        obj["nid"].ToString() + "@" + obj["name"].ToString() + " > " +
+                                        obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                         obj["msg"].ToString(),
                                         listBox
                                     );
@@ -147,7 +184,7 @@ namespace LIM
                                     {
                                         AddItemToListBox(
                                             "[" + endpoint.Address.ToString() + "] " +
-                                            obj["nid"].ToString() + "@" + obj["name"].ToString() + " > " +
+                                            obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                             obj["msg"].ToString(),
                                             listBox
                                         );
@@ -165,7 +202,7 @@ namespace LIM
                                     {
                                         AddItemToListBox(
                                             "[" + endpoint.Address.ToString() + "] " +
-                                            obj["nid"].ToString() + "@" + obj["name"].ToString() + " > " +
+                                            obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                             obj["msg"].ToString(),
                                             listBox
                                         );
@@ -208,6 +245,14 @@ namespace LIM
                                             SendMessage(2, "return".ToUpper(), output, endpoint);
                                         }
                                         
+                                    }else if (((string)obj["name"]).ToLower().Equals("return"))
+                                    {
+                                        AddItemToListBox(
+                                            "[" + endpoint.Address.ToString() + "] " +
+                                            obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
+                                            obj["msg"].ToString(),
+                                            listBox
+                                        );
                                     }
 
                                     continue;
@@ -245,11 +290,53 @@ namespace LIM
                                         }
 
                                     }
+                                    else if (((string)obj["name"]).ToLower().Equals("return"))
+                                    {
+                                        AddItemToListBox(
+                                            "[" + endpoint.Address.ToString() + "] " +
+                                            obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
+                                            obj["msg"].ToString(),
+                                            listBox
+                                        );
+                                    }
 
                                     continue;
                                 }
                                 continue;
                             }
+                        }
+
+                        if (int.Parse((string)obj["type"]) == 4)
+                        {
+                            if (ig_nid.Checked)
+                            {
+                                if (((string)obj["name"]).ToLower().Equals("join"))
+                                {
+                                    AddItemToListBox(
+                                        "[" + endpoint.Address.ToString() + "] " +
+                                        obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
+                                        "Join Chat",
+                                        listBox
+                                    );
+                                }
+                                
+                                continue;
+                            }
+
+                            if (int.Parse((string)obj["nid"]) == NetWorkID)
+                            {
+                                if (((string)obj["name"]).ToLower().Equals("join"))
+                                {
+                                    AddItemToListBox(
+                                        "[" + endpoint.Address.ToString() + "] " +
+                                        obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
+                                        "Join Chat",
+                                        listBox
+                                    );
+                                }
+                                continue;
+                            }
+                            continue;
                         }
                     }
                 }

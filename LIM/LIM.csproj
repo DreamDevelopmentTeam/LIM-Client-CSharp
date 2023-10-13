@@ -87,6 +87,7 @@
     <Compile Include="ChatForm.Designer.cs">
       <DependentUpon>ChatForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Encryption\AES256.cs" />
     <Compile Include="GlobalData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -127,5 +128,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
