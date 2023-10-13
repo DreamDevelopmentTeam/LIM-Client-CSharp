@@ -54,6 +54,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.checkBox7 = new System.Windows.Forms.CheckBox();
             this.checkBox8 = new System.Windows.Forms.CheckBox();
+            this.button5 = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +76,7 @@
             this.button1.Font = new System.Drawing.Font("宋体", 12F);
             this.button1.Location = new System.Drawing.Point(672, 31);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 33);
+            this.button1.Size = new System.Drawing.Size(93, 33);
             this.button1.TabIndex = 1;
             this.button1.Text = "清除记录";
             this.button1.UseVisualStyleBackColor = true;
@@ -314,11 +315,23 @@
             this.checkBox8.Text = "Enter发送消息";
             this.checkBox8.UseVisualStyleBackColor = true;
             // 
+            // button5
+            // 
+            this.button5.Font = new System.Drawing.Font("宋体", 12F);
+            this.button5.Location = new System.Drawing.Point(771, 30);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(34, 34);
+            this.button5.TabIndex = 20;
+            this.button5.Text = "?";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // ChatForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 613);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.checkBox8);
             this.Controls.Add(this.checkBox7);
             this.Controls.Add(this.textBox3);
@@ -378,5 +391,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.CheckBox checkBox7;
         private System.Windows.Forms.CheckBox checkBox8;
+        private System.Windows.Forms.Button button5;
     }
 }

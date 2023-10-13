@@ -85,6 +85,14 @@ namespace LIM
 
         private void ChatForm_FormClosed(object sender, FormClosedEventArgs e)
         {
+            try
+            {
+                GlobalData.SendMessage(4, "quit".ToUpper(), GlobalData.UserName, GlobalData.BroadcastIP);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
             GlobalData.UdpCore.Close();
             Environment.Exit(0);
         }
@@ -238,6 +246,22 @@ namespace LIM
                     return;
                 }
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            string help_data = "LIM Node 节点客户端 (NODE/LIM)(" + Versions.VersionName + " / " + Versions.ProtocalName + ") 客户端帮助文档：\n\n" +
+
+                               "> 清除记录：\n\t清空消息接收区域现有的聊天记录。\n" +
+                               "> 查询客户端：\n\t通过此节点向网络发送‘客户端发现协议’报文，如果客户端在线，则会向此节点发送回复报文。\n" +
+                               "> 地址黑名单：\n\t使用‘|’符号或‘;’符号（不可同时使用多种符号）分割的IP地址列表。节点会屏蔽从这些IP地址发出的数据报文。\n" +
+                               "> 消息接收目标：\n\t如果开启此选项，并且在文本框键入目标IP地址，则数据报文将仅发送给目标IP，否则数据报文将向整个局域网广播。如果开启此选项且输入框为空，数据报文仍然会被广播到整个局域网。\n";
+
+            MessageBox.Show(help_data,
+                "LIM Node > Chat > Help",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Question
+            );
         }
     }
 }

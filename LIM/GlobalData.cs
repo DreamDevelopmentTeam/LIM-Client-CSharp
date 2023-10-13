@@ -122,12 +122,23 @@ namespace LIM
 
                     if (blk_box.Text != null && !blk_box.Text.Trim().Equals(""))
                     {
-                        string[] blk_list = blk_box.Text.Split(new []{'|'}, StringSplitOptions.RemoveEmptyEntries);
+                        string temp_string = blk_box.Text.Replace("\n", "");
+                        temp_string = temp_string.Replace("\t", "");
+                        string[] blk_list = temp_string.Split(new []{'|'}, StringSplitOptions.RemoveEmptyEntries);
                         if (blk_list.Contains(endpoint.Address.ToString()) || 
                             blk_list.Contains(endpoint.Address.ToString() + "|") ||
                             //blk_box.Text.Contains(endpoint.Address.ToString()) ||
                             blk_box.Text.Contains(endpoint.Address.ToString() + "|")
                         )
+                        {
+                            continue;
+                        }
+                        blk_list = temp_string.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (blk_list.Contains(endpoint.Address.ToString()) ||
+                            blk_list.Contains(endpoint.Address.ToString() + ";") ||
+                            //blk_box.Text.Contains(endpoint.Address.ToString()) ||
+                            blk_box.Text.Contains(endpoint.Address.ToString() + ";")
+                           )
                         {
                             continue;
                         }
@@ -318,8 +329,16 @@ namespace LIM
                                         "Join Chat",
                                         listBox
                                     );
+                                }else if (((string)obj["name"]).ToLower().Equals("quit"))
+                                {
+                                    AddItemToListBox(
+                                        "[" + endpoint.Address.ToString() + "] " +
+                                        obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
+                                        "Quit Chat",
+                                        listBox
+                                    );
                                 }
-                                
+
                                 continue;
                             }
 
@@ -331,6 +350,15 @@ namespace LIM
                                         "[" + endpoint.Address.ToString() + "] " +
                                         obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
                                         "Join Chat",
+                                        listBox
+                                    );
+                                }
+                                else if (((string)obj["name"]).ToLower().Equals("quit"))
+                                {
+                                    AddItemToListBox(
+                                        "[" + endpoint.Address.ToString() + "] " +
+                                        obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
+                                        "Quit Chat",
                                         listBox
                                     );
                                 }
