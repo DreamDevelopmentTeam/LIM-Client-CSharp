@@ -162,7 +162,7 @@ namespace LIM
                                 if (ig_nid.Checked)
                                 {
                                     AddItemToListBox(
-                                        "[" + endpoint.Address.ToString() + "] " +
+                                        "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                         obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                         obj["msg"].ToString(),
                                         listBox
@@ -173,7 +173,7 @@ namespace LIM
                                 if (int.Parse((string)obj["nid"]) == NetWorkID)
                                 {
                                     AddItemToListBox(
-                                        "[" + endpoint.Address.ToString() + "] " +
+                                        "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " + 
                                         obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                         obj["msg"].ToString(),
                                         listBox
@@ -194,7 +194,7 @@ namespace LIM
                                     if (((string)obj["name"]).ToLower().Equals("return"))
                                     {
                                         AddItemToListBox(
-                                            "[" + endpoint.Address.ToString() + "] " +
+                                            "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                             obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                             obj["msg"].ToString(),
                                             listBox
@@ -212,7 +212,7 @@ namespace LIM
                                     if (((string)obj["name"]).ToLower().Equals("return"))
                                     {
                                         AddItemToListBox(
-                                            "[" + endpoint.Address.ToString() + "] " +
+                                            "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                             obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                             obj["msg"].ToString(),
                                             listBox
@@ -259,7 +259,7 @@ namespace LIM
                                     }else if (((string)obj["name"]).ToLower().Equals("return"))
                                     {
                                         AddItemToListBox(
-                                            "[" + endpoint.Address.ToString() + "] " +
+                                            "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                             obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                             obj["msg"].ToString(),
                                             listBox
@@ -304,7 +304,7 @@ namespace LIM
                                     else if (((string)obj["name"]).ToLower().Equals("return"))
                                     {
                                         AddItemToListBox(
-                                            "[" + endpoint.Address.ToString() + "] " +
+                                            "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                             obj["nid"].ToString() + " @ " + obj["name"].ToString() + " > " +
                                             obj["msg"].ToString(),
                                             listBox
@@ -324,7 +324,7 @@ namespace LIM
                                 if (((string)obj["name"]).ToLower().Equals("join"))
                                 {
                                     AddItemToListBox(
-                                        "[" + endpoint.Address.ToString() + "] " +
+                                        "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                         obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
                                         "Join Chat",
                                         listBox
@@ -332,7 +332,7 @@ namespace LIM
                                 }else if (((string)obj["name"]).ToLower().Equals("quit"))
                                 {
                                     AddItemToListBox(
-                                        "[" + endpoint.Address.ToString() + "] " +
+                                        "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                         obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
                                         "Quit Chat",
                                         listBox
@@ -347,7 +347,7 @@ namespace LIM
                                 if (((string)obj["name"]).ToLower().Equals("join"))
                                 {
                                     AddItemToListBox(
-                                        "[" + endpoint.Address.ToString() + "] " +
+                                        "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                         obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
                                         "Join Chat",
                                         listBox
@@ -356,7 +356,7 @@ namespace LIM
                                 else if (((string)obj["name"]).ToLower().Equals("quit"))
                                 {
                                     AddItemToListBox(
-                                        "[" + endpoint.Address.ToString() + "] " +
+                                        "[" + endpoint.Address.ToString() + "](" + DateTime.Now.ToString("HH:mm:ss") + ") " +
                                         obj["nid"].ToString() + " @ " + obj["msg"].ToString() + " --> " +
                                         "Quit Chat",
                                         listBox
